@@ -1,59 +1,247 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Karko - Kar (car) Ko (go)
+Karko adalah aplikasi berbasis web untuk manajemen peminjaman kendaraan perusahaan. Sistem ini menyediakan fitur pengelolaan kendaraan, driver, booking kendaraan, approval bertingkat, pencatatan penggunaan bahan bakar, serta riwayat service kendaraan.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Tech Stack
 
-## About Laravel
+- Framework : Laravel 12
+- PHP Version : PHP 8.3+
+- Database : MySQL 10.4+
+- Frontend : Blade Template + Tailwind CSS
+- Authentication : Laravel Breeze
+- Chart Library : Chart.js
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Database Information
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Database yang digunakan:
 
-## Learning Laravel
+```text
+Database Name : karko
+Database Type : MySQL
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Versi database:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```text
+MySQL Version : 10.x
+```
 
-## Laravel Sponsors
+Daftar tabel:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```text
+users
 
-### Premium Partners
+- id
+- name
+- email
+- password
+- phone_number
+- role
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
 
-## Contributing
+vehicles
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- id
+- plate_number
+- brand
+- type
+- ownership
+- service_date
+- status
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+drivers
 
-## Security Vulnerabilities
+- id
+- name
+- phone_number
+- status
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+bookings
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- id
+- vehicle_id
+- driver_id
+- request_date
+- start_date
+- end_date
+- purpose
+- status
+- created_by
+
+
+approvals
+
+- id
+- booking_id
+- approver_id
+- level
+- status
+
+
+fuel_logs
+
+- id
+- vehicle_id
+- date
+- liter
+- cost
+- receipt_image
+- created_by
+
+
+services
+
+- id
+- vehicle_id
+- date
+- description
+- cost
+- status
+```
+
+---
+
+# User Account
+
+Default user yang tersedia dari Seeder:
+
+## Admin
+
+```text
+Email    : admin@gmail.com
+Password : password
+
+Role     : Admin
+```
+
+Hak akses:
+
+- Dashboard monitoring kendaraan
+- Kelola kendaraan
+- Kelola driver
+- Membuat booking kendaraan
+- Melihat status approval
+- Menyelesaikan booking kendaraan
+- Mencatat penggunaan BBM
+- Mengelola service kendaraan
+- Download laporan penggunaan kendaraan
+
+
+---
+
+## Approver Level 1
+
+```text
+Email    : supervisor@gmail.com
+Password : password
+
+Role     : Approver
+```
+
+Hak akses:
+
+- Melihat request approval
+- Approve booking level 1
+- Reject booking
+- Melihat history approval
+
+
+---
+
+## Approver Level 2
+
+```text
+Email    : manager@gmail.com
+Password : password
+
+Role     : Approver
+```
+
+Hak akses:
+
+- Melihat request approval
+- Approve booking level 2
+- Reject booking
+- Melihat history approval
+
+
+
+---
+
+# Cara Install Project
+
+Clone repository:
+
+```bash
+git clone <repository-url>
+```
+
+Masuk folder:
+
+```bash
+cd karko
+```
+
+Install dependency Laravel:
+
+```bash
+composer install
+```
+
+Install dependency frontend:
+
+```bash
+npm install
+```
+
+Copy environment:
+
+```bash
+cp .env.example .env
+```
+
+Generate key:
+
+```bash
+php artisan key:generate
+```
+
+Setting database pada `.env`
+
+```env
+DB_DATABASE=karko
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Jalankan migration dan seeder:
+
+```bash
+php artisan migrate --seed
+```
+
+Jalankan Laravel:
+
+```bash
+php artisan serve
+```
+
+Jalankan Vite:
+
+```bash
+npm run dev
+```
+
+Akses aplikasi:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+# Developer
+
+Project dibuat menggunakan Laravel sebagai sistem manajemen booking kendaraan berbasis role Admin dan Approver.

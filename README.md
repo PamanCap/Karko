@@ -242,6 +242,12 @@ http://127.0.0.1:8000
 
 ---
 
+Physical Data model & Activity Diagram
+https://drive.google.com/file/d/14fUmwV6M_BoFIwTUGOzcZa4H3JDFXe5A/view?usp=drive_link
+https://drive.google.com/file/d/1alG1MMmhILAlL0CiPf3dz0I6q5WHb4dn/view?usp=drive_link
+
+---
+
 # Developer
 
 Project dibuat menggunakan Laravel sebagai sistem manajemen booking kendaraan berbasis role Admin dan Approver.
